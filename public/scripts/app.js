@@ -1,3 +1,11 @@
+// Do we need document.ready?
+
+// $(document).ready(function () {
+
+// });
+
+
+
 $(() => {
   $.ajax({
     method: "GET",
