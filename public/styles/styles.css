@@ -1,0 +1,18 @@
+.logo-div {
+  display: flex;
+  background-color: #D45B5B;
+  justify-content: center;
+}
+nav {
+ background-color: #F86F0F;
+ width: 100%;
+}
+body {
+  background-color: #F6F3EF;
+}
+h1 {
+  color: #D45B5B;
+}
+title {
+  color: #D45B5B;
+}
