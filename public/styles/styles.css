@@ -3,8 +3,18 @@
   background-color: #D45B5B;
   justify-content: center;
 }
+
+.container-fluid {
+  flex-direction: column;
+  background-color: #D45B5B;
+}
+
+#navbarSupportedContent {
+  justify-content: center;
+}
+
 nav {
- background-color: #F86F0F;
+ background-color: #D45B5B;
  width: 100%;
 }
 body {
