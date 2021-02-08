@@ -43,46 +43,52 @@ app.get("/", (req, res) => {
 });
 
 
-// GET favourites for logged in user: done?
+// GET favourites for logged in user: done
 
 app.get("/favourites", (req, res) => {
 const userID = req.session.user_id;
   if (!userID) {
-    res.redirect("/main");
+    return res.redirect("/main");
   }
-  const favourites = db.getFavouritesForUser(userID);
-  const templateVars = { favourites };
-  res.render("favourites", templateVars);
+  db.getFavouritesForUser(userID)
+    .then((favourites) => {
+      const templateVars = { favourites };
+      res.render("favourites", templateVars);
+    });
 });
 
 
-// POST create new listing: is this right?
+// POST create new listing: done
 
 app.post("/create_listing", (req, res) => {
   const userID = req.session.user_id
 
   if(!userID) {
-    res.redirect("/main");
+   return res.redirect("/main");
   }
 
-  const newListing = db.createNewListing(/* not sure what to put here */);
+  const newListing = req.body;
+  newListing.seller_id = userID;
 
-  const templateVars = { newListing };
-
-  res.render("/my_listings", templateVars);
+  db.createNewListing(newListing)
+    .then((newlyCreatedListing) => {
+      res.json(newlyCreatedListing);
+    });
 });
 
 
-// GET my_listings for logged in user: is this right?
+// GET my_listings for logged in user: done
 
 app.get("/my_listings", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
-    res.redirect("/main");
+    return res.redirect("/main");
   }
-  const myListings = db.getUsersListings(userID);
-  const templateVars = { myListings };
-  res.render("my_listings", templateVars);
+  db.getUsersListings(userID)
+    .then((myListings) => {
+      const templateVars = { myListings };
+      res.render("my_listings", templateVars);
+    });
 });
 
 
