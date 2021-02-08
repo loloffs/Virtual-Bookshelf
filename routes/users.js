@@ -16,6 +16,7 @@ const db = require('../lib/db');
 //   res.redirect('/');
 // });
 
+
 module.exports = (db) => {
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)
