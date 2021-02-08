@@ -186,74 +186,74 @@ VALUES (3, 'The Adventures of Huckleberry Finn', 'Huck Finn escapes his abusive 
 
 -- Favourites
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (4, 5);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (12, 15);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (20, 1);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (7, 16);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (1, 6);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (2, 18);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (14, 13);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (13, 17);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (10, 9);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (16, 20);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (16, 30);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (10, 26);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (1, 22);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (10, 9);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (11, 26);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (8, 23);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (15, 34);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (5, 33);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (13, 35);
 
-INSERT INTO users (user_id, listing_id)
+INSERT INTO favourites (user_id, listing_id)
 VALUES (3, 36);
 
-INSERT INTO users (user_id, listing_id)
-VALUES (17, 39);
+INSERT INTO favourites (user_id, listing_id)
+VALUES (17, 3);
 
-INSERT INTO users (user_id, listing_id)
-VALUES (5, 40);
+INSERT INTO favourites (user_id, listing_id)
+VALUES (5, 23);
 
-INSERT INTO users (user_id, listing_id)
-VALUES (14, 37);
+INSERT INTO favourites (user_id, listing_id)
+VALUES (14, 17);
 
-INSERT INTO users (user_id, listing_id)
-VALUES (19, 38);
+INSERT INTO favourites (user_id, listing_id)
+VALUES (19, 8);
