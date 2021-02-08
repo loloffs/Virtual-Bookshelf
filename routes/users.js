@@ -92,40 +92,85 @@ app.get("/my_listings", (req, res) => {
 });
 
 
-// POST 'favourite' a listing as a logged in user
+// POST 'favourite' a listing as a logged in user: Not sure how to do this
 
+app.post("/main", (req, res) => {
+  const userID = req.session.user_id
 
-
-// DELETE delete your listing(s): done?
-
-app.post("/urls/:shortURL/delete", (req, res) => {
-  const userID = req.session.user_id;
-  if (!userID) {
-    res.redirect("/main");
+  if(!userID) {
+   return res.redirect("/main");
   }
-  const removeListing =  db.deleteListing(userID);
-  const templateVars = { removeListing };
-  res.render("/my_listings", templateVars);
+
+  db.markListingAsSold(listing)
+    .then((markedAsSold) => {
+      res.json(markedAsSold);
+    });
 });
 
 
-// PUT mark your listing as sold
 
 
-// GET/POST for login? figure out how to do this for "fake" login
+// DELETE delete your listing(s): Done
+
+app.post("/main/my_listings/:listing_id/delete", (req, res) => {
+  const userID = req.session.user_id;
+  const listingID = req.params.listing_id;
+  if (!userID) {
+    res.redirect("/main");
+  }
+  db.deleteListing(userID, listingID)
+    .then(() => {
+      res.redirect("/my_listings");
+    });
+});
 
 
-// POST logout: which of these two is closest?
+// PUT mark your listing as sold: Done
+
+app.post("/my_listings/:listing_id/sold", (req, res) => {
+  const userID = req.session.user_id
+  const listingID = req.params.listing_id;
+
+  if(!userID) {
+   return res.redirect("/main");
+  }
+
+  db.markListingAsSold(listingID)
+    .then(() => {
+      res.send("Sold");
+    });
+
+});
+
+
+
+// GET/POST for login? figure out how to do this for "fake" login: Done
+
+app.post("/login", (req, res) => {
+  const loginText = req.body.userID;
+
+  if (!loginText) {
+    return res.status(403).send("Email or password cannot be blank");
+  }
+
+  req.session.user_id = loginText;
+  res.redirect("/main",);
+});
+
+
+
+
+// POST logout: which of these two is closest?: Done
 
 app.post("/logout", (req, res) => {
   delete req.session.user_id;
   res.redirect("/main");
 });
 
-router.post('/logout', (req, res) => {
-  req.session.userId = null;
-  res.send({});
-});
+// router.post('/logout', (req, res) => {
+//   req.session.userId = null;
+//   res.send({});
+// });
 
 
 
