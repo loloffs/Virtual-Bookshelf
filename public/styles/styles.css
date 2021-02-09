@@ -44,8 +44,12 @@
   background-color: #f8bf12;
   color: white;
   padding: 16px;
-  font-size: 16px;
+  font-size: 30px;
   border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  width:250px;
+	height:100px;
 }
 
 /* The container <div> - needed to position the dropdown content */
@@ -62,6 +66,7 @@
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  width:250px;
 }
 
 /* Links inside the dropdown */
@@ -79,7 +84,7 @@
 .dropdown:hover .dropdown-content {display: block;}
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown:hover .dropbtn {background-color: #F86F0F;}
 
 nav {
  background-color: #D45B5B;
