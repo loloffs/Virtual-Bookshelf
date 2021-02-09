@@ -94,20 +94,29 @@ app.get("/my_listings", (req, res) => {
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
-app.post("/main", (req, res) => {
+app.post("/listings/:listing_id/favourite", (req, res) => {
   const userID = req.session.user_id
+  const listingID = req.params.listing_id;
 
   if(!userID) {
    return res.redirect("/main");
   }
 
-  db.markListingAsSold(listing)
-    .then((markedAsSold) => {
-      res.json(markedAsSold);
+  if(db.isListingFavourited(userID, listingID)) {
+    return res.status(403).send("Listing already favourited");
+  }
+
+
+  db.favouriteAListing(userID, listingID)
+    .then((favourite) => {
+      res.json(favourite);
     });
 });
 
 
+
+
+// Handle case for unfavourite
 
 
 // DELETE delete your listing(s): Done
@@ -150,7 +159,7 @@ app.post("/login", (req, res) => {
   const loginText = req.body.userID;
 
   if (!loginText) {
-    return res.status(403).send("Email or password cannot be blank");
+    return res.status(403).send("Please input a valid user ID");
   }
 
   req.session.user_id = loginText;
