@@ -39,6 +39,13 @@
   width: 50%;
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /* display: flex; */
+}
+
 /* Dropdown Button */
 .dropbtn {
   background-color: #f8bf12;
@@ -52,11 +59,6 @@
 	height:100px;
 }
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
