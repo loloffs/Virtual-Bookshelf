@@ -20,7 +20,7 @@ console.log("TEST");
     console.log("log and click");
      $.ajax({
     method: "POST",
-    url: "/login"
+    url: "/api/users/login"
   }).done(() => {
     console.log("login complete");
   });;

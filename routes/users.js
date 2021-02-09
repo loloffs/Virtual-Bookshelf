@@ -151,7 +151,7 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
   req.session.user_id = userID;
-  res.redirect("/main",);
+  res.send("Sucess",);
 });
 
 
