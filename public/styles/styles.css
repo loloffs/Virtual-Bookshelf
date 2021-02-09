@@ -1,3 +1,6 @@
+#navbarSupportedContent {
+  justify-content: center;
+}
 .logo-div {
   display: flex;
   background-color: #D45B5B;
@@ -9,8 +12,25 @@
   background-color: #D45B5B;
 }
 
-#navbarSupportedContent {
-  justify-content: center;
+/* .nav-item {
+  padding: 0 10% 0 10%;
+} */
+
+.nav-link {
+  color: #FFF!important;
+  font-weight: bold;
+  font-size: 1.5rem;
+
+}
+
+.row {
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.search {
+  margin-top: 10px;
+  padding: 10px;
 }
 
 nav {
@@ -19,6 +39,7 @@ nav {
 }
 body {
   background-color: #F6F3EF;
+  font-family: 'Ubuntu';
 }
 h1 {
   color: #D45B5B;
