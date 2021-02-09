@@ -6,41 +6,16 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+// const router  = express.Router();
 const app = express();
+const DBHELPER = require('../db/dbHelper');
 
-const db = require('../lib/db');
-
-// app.get('/login/:id', (req, res) => {
-//   req.session.user_id = req.params.id;
-//   res.redirect('/');
-// });
-
-
-module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
-  return router;
-};
+module.exports = (pool) => {
+  const db = DBHELPER(pool);
 
 
 
-// GET main page
 
-app.get("/", (req, res) => {
-
-  res.redirect("/main");
-});
 
 
 // GET favourites for logged in user: done
@@ -102,15 +77,17 @@ app.post("/listings/:listing_id/favourite", (req, res) => {
    return res.redirect("/main");
   }
 
-  if(db.isListingFavourited(userID, listingID)) {
-    return res.status(403).send("Listing already favourited");
-  }
-
-
-  db.favouriteAListing(userID, listingID)
-    .then((favourite) => {
-      res.json(favourite);
-    });
+  db.isListingFavourited(userID, listingID)
+    .then((isFavourited) => {
+      if(isFavourited) {
+        return res.status(403).send("Listing already favourited");
+      } else {
+        db.favouriteAListing(userID, listingID)
+          .then((favourite) => {
+            res.json(favourite);
+        });
+      }
+    })
 });
 
 
@@ -153,16 +130,27 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 
 
 
-// GET/POST for login? figure out how to do this for "fake" login: Done
+// GET/POST for login? figure out how to do this for "fake" login:
 
+
+// First attempt...
+
+// app.post("/login", (req, res) => {
+//   const loginText = req.body.userID;
+
+//   if (!loginText) {
+//     return res.status(403).send("Please input a valid user ID");
+//   }
+
+//   req.session.user_id = loginText;
+//   res.redirect("/main",);
+// });
+
+
+// Second attempt where clicking "Login" button logs in as a random user
 app.post("/login", (req, res) => {
-  const loginText = req.body.userID;
-
-  if (!loginText) {
-    return res.status(403).send("Please input a valid user ID");
-  }
-
-  req.session.user_id = loginText;
+  const userID = db.randomUserID();
+  req.session.user_id = userID;
   res.redirect("/main",);
 });
 
@@ -183,5 +171,11 @@ app.post("/logout", (req, res) => {
 
 
 
-// GET/POST for search feature?
+ // GET/POST for search feature?
+
+  return app;
+
+};
+
+
 
