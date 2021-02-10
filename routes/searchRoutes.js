@@ -23,10 +23,10 @@ module.exports = (pool) => {
     //Divide this function up and make separate search routes?
     //We should have two optional drop down menu's (form data drop down menu's as linked in discord chat) for the search type and the order in the same form to get the query paramaters working
 
-    if (searchOrder === "lowestPrice") { // change order to set price aescending as default
-      let orderBy = "price";
-    } else if (searchOrder === "highestPrice") {
+    if (searchOrder === "highestPrice") {
       let orderBy = "price DESC";
+    } else if (searchOrder === "lowestPrice") {
+      let orderBy = "price";
     }
     if (searchType === "maxPrice") {
       if (isNaN(searchText)) {
@@ -43,13 +43,13 @@ module.exports = (pool) => {
       } else {
         db.searchByMinPrice(searchText, orderBy)
         .then((results) => {
-          const templateVars = { books: results};
+          const templateVars = { books: results };
         });
       }
     } else if (searchType === "title") {
       db.searchByTitle(searchText, orderBy)
       .then((results) => {
-        const templateVars = { books: results};
+        const templateVars = { books: results };
       });
      } else if (searchType === "author") {
        db.searchByAuthor(searchText, orderBy)
