@@ -14,7 +14,9 @@ module.exports = (pool) => {
 
   const getAllListings = function() {
     return pool.query(`
-    SELECT * FROM listings;
+    SELECT listings.*, users.email
+    FROM listings
+    JOIN users ON users.id = seller_id;
     `)
     .then(res => {
       return res.rows;

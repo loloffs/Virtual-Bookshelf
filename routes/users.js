@@ -54,15 +54,15 @@ app.post("/create_listing", (req, res) => {
 
 // GET my_listings for logged in user: done
 
-app.get("/my_listings", (req, res) => {
+app.get("/myListings", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
-    return res.redirect("/main");
+    return res.redirect("/index");
   }
   db.getUsersListings(userID)
     .then((myListings) => {
       const templateVars = { myListings };
-      res.render("my_listings", templateVars);
+      res.render("myListings", templateVars);
     });
 });
 
@@ -150,6 +150,7 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 // Second attempt where clicking "Login" button logs in as a random user
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
+  console.log(userID);
   req.session.user_id = userID;
   res.send("Sucess",);
 });
