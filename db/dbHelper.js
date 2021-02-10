@@ -77,7 +77,8 @@ module.exports = (pool) => {
   const favouriteAListing = function(userID, listingID) {
     return pool.query(`
     INSERT INTO favourites (user_id, listing_id)
-    VALUES ($1, $2);
+    VALUES ($1, $2)
+    RETURNING *;
     `, [userID, listingID])
   };
 

@@ -87,7 +87,7 @@ app.get("/myListings", (req, res) => {
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
-app.post("/:user_id/favourite", (req, res) => {
+app.post("/:listing_id/favourite", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
@@ -106,7 +106,8 @@ app.post("/:user_id/favourite", (req, res) => {
 
         db.favouriteAListing(userID, listingID)
           .then((favourite) => {
-            res.json(favourite);
+            return res.json(favourite);
+            // return res.redirect("/favourites");
         });
       // }
     // })
