@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="styles/styles.css" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- JQUERY -->
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script src="/scripts/app.js"></script>
+
+    <title>Virtual Bookshelf</title>
+
+  </head>
+  <body>
+
+    <header>
+      <%- include('partials/_header') %>
+    </header>
+
+    <!-- SECTION SEARCH -->
+    <div class="search">
+      <form class="d-flex" action="/api/search/main/search" method="GET">
+        <input type="hidden" name="searchType" value="title">
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" name="author" placeholder="Author" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" name="minPrice" placeholder="Min Price" aria-label="Search">
+        <input class="form-control me-2" type="search" name="maxPrice" placeholder="Max Price" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+    </div>
+
+    <!-- SECTION LISTINGS -->
+    <section class="listings">
+      <div class="container-fluid col-lg-12">
+        <div class="row">
+          <% for (let book of books) { %>
+            <!-- CARD ELEMENT -->
+            <div class="card" style="width: 15rem;">
+              <img src= "<%= book.picture_url %>" class="card-img-top picture-size" alt="book">
+              <div class="card-body">
+                <h5 class="card-title"> <%= book.title %> </h5>
+                <p class="card-text"> <i><%= book.author %></i> </p>
+                <p class="card-text"> <%= book.description %> </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $<%= book.price %></li>
+                <li class="list-group-item">Condition: <%= book.condition %></li>
+              <form action="/api/users/<%= book.id %>/favourite" method="POST">
+                <li id="favourite" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
+              </form>
+              </ul>
+              <div class="card-body">
+                <!-- <a href="#" class="card-link">Email</a> -->
+                <a href="mailto:raunak.00o201@gmail.com" class="card-link"> <%= book.email %> </a>
+                <!-- <a href="#" class="card-link">Another link</a> -->
+              </div>
+            </div>
+         <% } %>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+  </body>
+</html>

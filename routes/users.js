@@ -38,7 +38,7 @@ app.get("/favourites", (req, res) => {
   if (!userID) {
     return res.redirect("/index");
   }
-  db.getFavouritesForUser()
+  db.getFavouritesForUser(userID)
     .then(rows => {
 
       const templateVars = { books: rows };
