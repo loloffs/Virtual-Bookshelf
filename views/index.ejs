@@ -32,7 +32,8 @@
     <!-- SECTION SEARCH -->
     <div class="search">
       <form class="d-flex" action="/api/search/main/search" method="GET">
-        <input class="form-control me-2" type="text" name="title" placeholder="Title" aria-label="Search">
+        <input type="hidden" name="searchType" value="title">
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
       <form class="d-flex">

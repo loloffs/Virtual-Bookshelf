@@ -107,7 +107,7 @@ module.exports = (pool) => {
   const searchByMaxPrice = function(bookPrice, orderBy) {
     const queryString = `SELECT * FROM listings WHERE price <= $1 ORDER BY $2`
     const values = [bookPrice, orderBy]
-    pool.query(queryString, values)
+    return pool.query(queryString, values)
     .then(res => {
       return res.rows;
     })
@@ -117,7 +117,7 @@ module.exports = (pool) => {
   const searchByMinPrice = function(bookPrice, orderBy) {
     const queryString = `SELECT * FROM listings WHERE price >= $1 ORDER BY $2 DESC`
     const values = [bookPrice, orderBy]
-    pool.query(queryString, values)
+    return pool.query(queryString, values)
     .then(res => {
       return res.rows;
     })
@@ -125,9 +125,11 @@ module.exports = (pool) => {
   };
 
   const searchByTitle = function(bookTitle) {
-    const queryString = `SELECT * FROM listings WHERE title LIKE $1`
-    const values = [bookTitle]
-    pool.query(queryString, values)
+    const queryString = `SELECT * FROM listings WHERE title LIKE $1`;
+    console.log(queryString);
+    console.log(bookTitle);
+    const values = [`%${bookTitle}%`]
+    return pool.query(queryString, values)
     .then(res => {
       return res.rows;
     })
@@ -137,7 +139,7 @@ module.exports = (pool) => {
   const searchByAuthor = function(bookAuthor) {
     const queryString = `SELECT * FROM listings WHERE author LIKE $1`
     const values = [bookAuthor]
-    pool.query(queryString, values)
+    return pool.query(queryString, values)
     .then(res => {
       return res.rows;
     })
