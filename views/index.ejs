@@ -30,36 +30,21 @@
     </header>
 
     <!-- SECTION SEARCH -->
-    <div class="dropdown">
-      <button class="dropbtn"><i class="fas fa-search"></i> Search</button>
-      <div class="dropdown-content">
-        <a href="#">Name</a>
-        <a href="#">Price</a>
-        <a href="#">Author</a>
-      </div>
+    <div class="search">
+      <form class="d-flex" action="/api/search/main/search" method="GET">
+        <input class="form-control me-2" type="text" name="title" placeholder="Title" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" name="author" placeholder="Author" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" name="minPrice" placeholder="Min Price" aria-label="Search">
+        <input class="form-control me-2" type="search" name="maxPrice" placeholder="Max Price" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
     </div>
-
-    <select>
-      <option>Apples</option>
-      <option selected>Pineapples</option>
-      <option>Chocolate</option>
-      <option>Pancakes</option>
-    </select>
-
-    <!-- <section class="search">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-danger" type="submit">Search</button>
-      </form>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-danger" type="submit">Search</button>
-      </form>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-danger" type="submit">Search</button>
-      </form>
-    </section> -->
 
     <!-- SECTION LISTINGS -->
     <section class="listings">
@@ -77,7 +62,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= book.price %></li>
                 <li class="list-group-item">Condition: <%= book.condition %></li>
-                <li id="favourite" class="list-group-item"><button>Favourite</button> <i hidden class="fas fa-heart"></i></li>
+                <li id="favourite" class="list-group-item"><button>Favourite</button> <i class="fas fa-heart"></i></li>
               </ul>
               <div class="card-body">
                 <!-- <a href="#" class="card-link">Email</a> -->
