@@ -23,7 +23,7 @@ console.log("TEST");
 
 
   $("#login-button").click(() => {
-    console.log("log and click");
+    console.log("login click");
      $.ajax({
     method: "POST",
     url: "/api/users/login"
@@ -31,4 +31,21 @@ console.log("TEST");
     console.log("login complete");
   });;
   });
+
+  $("#logout-button").click(() => {
+    console.log("logout click");
+     $.ajax({
+    method: "POST",
+    url: "/api/users/logout"
+  }).done(() => {
+    console.log("logged out");
+  });;
+  });
+
+
+
+
+
+
+
 });
