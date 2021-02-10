@@ -20,16 +20,34 @@ module.exports = (pool) => {
 
 // GET favourites for logged in user: done
 
+// app.get("/favourites", (req, res) => {
+// const userID = req.session.user_id;
+//   if (!userID) {
+//     return res.redirect("/index");
+//   }
+//   db.getFavouritesForUser(userID)
+//     .then((favourites) => {
+//       const templateVars = { favourites };
+//       res.render("favourites", templateVars);
+//     });
+// });
+
+// I think this is closest
 app.get("/favourites", (req, res) => {
-const userID = req.session.user_id;
+  const userID = req.session.user_id;
   if (!userID) {
-    return res.redirect("/main");
+    return res.redirect("/index");
   }
-  db.getFavouritesForUser(userID)
-    .then((favourites) => {
-      const templateVars = { favourites };
+  db.getFavouritesForUser()
+    .then(rows => {
+
+      const templateVars = { books: rows };
+      console.log(rows);
+
       res.render("favourites", templateVars);
+
     });
+
 });
 
 
@@ -69,26 +87,32 @@ app.get("/myListings", (req, res) => {
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
-app.post("/listings/:listing_id/favourite", (req, res) => {
+app.post("/:user_id/favourite", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
+
+  console.log("USER ID: ", userID);
+  console.log("LISTING ID: ", listingID);
 
   if(!userID) {
    return res.redirect("/index");
   }
 
-  db.isListingFavourited(userID, listingID)
-    .then((isFavourited) => {
-      if(isFavourited) {
-        return res.status(403).send("Listing already favourited");
-      } else {
+  // db.isListingFavourited(userID, listingID)
+  //   .then((isFavourited) => {
+  //     if(isFavourited) {
+  //       return res.status(403).send("Listing already favourited");
+  //     } else {
+
         db.favouriteAListing(userID, listingID)
           .then((favourite) => {
             res.json(favourite);
         });
-      }
-    })
+      // }
+    // })
 });
+
+
 
 
 
