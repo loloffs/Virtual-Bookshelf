@@ -16,12 +16,6 @@ console.log("TEST");
   //     $("<div>").text(user.name).appendTo($("body"));
   //   }
   // });;
-
-  $('#favourite').click(() => {
-    this.show();
-  });
-
-
   $("#login-button").click(() => {
     console.log("login click");
      $.ajax({
@@ -41,9 +35,6 @@ console.log("TEST");
     console.log("logged out");
   });;
   });
-
-
-
 
 
 
