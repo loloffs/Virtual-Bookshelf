@@ -26,15 +26,28 @@ console.log("TEST");
   });;
   });
 
-  $("#logout-button").click(() => {
-    console.log("logout click");
+  // $("#logout-button").click(() => {
+  //   console.log("logout click");
+  //    $.ajax({
+  //   method: "POST",
+  //   url: "/api/users/logout"
+  // }).done(() => {
+  //   console.log("logged out");
+  // });;
+  // });
+
+
+
+  $("#favourite-button").click(() => {
+    console.log("favourite click");
      $.ajax({
     method: "POST",
-    url: "/api/users/logout"
+    url: "/api/users/favourite"
   }).done(() => {
-    console.log("logged out");
+    console.log("listing favourited!");
   });;
   });
+
 
 
 
