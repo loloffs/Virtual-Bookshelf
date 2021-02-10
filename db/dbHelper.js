@@ -12,6 +12,17 @@ module.exports = (pool) => {
     }));
   };
 
+  const getAllListings = function() {
+    return pool.query(`
+    SELECT * FROM listings;
+    `)
+    .then(res => {
+      return res.rows;
+    })
+    .catch((error => {
+      console.log("Error message", error)
+    }));
+  };
 
   const getFavouritesForUser = function(userID) {
     return pool.query(`
@@ -139,7 +150,8 @@ module.exports = (pool) => {
     searchByTitle,
     searchByAuthor,
     randomUserID,
-    favouriteAListing
+    favouriteAListing,
+    getAllListings
   };
 
 }
