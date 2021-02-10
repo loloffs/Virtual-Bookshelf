@@ -56,78 +56,31 @@
 
     <!-- SECTION LISTINGS -->
     <section class="listings">
-      <div class="row">
-        <!-- CARD 1 -->
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title of the book</h5>
-            <p class="card-text">Book's description</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price</li>
-            <li class="list-group-item">Condition</li>
-            <li class="list-group-item">Favourite</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Email</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <!-- CARD 2 -->
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title of the book</h5>
-            <p class="card-text">Book's description</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price</li>
-            <li class="list-group-item">Condition</li>
-            <li class="list-group-item">Favourite</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-        <!-- CARD 3 -->
-        <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title of the book</h5>
-            <p class="card-text">Book's description</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price</li>
-            <li class="list-group-item">Condition</li>
-            <li class="list-group-item">Favourite</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
-         <!-- CARD 4 -->
-         <div class="card" style="width: 18rem;">
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Title of the book</h5>
-            <p class="card-text">Book's description</p>
-          </div>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Price</li>
-            <li class="list-group-item">Condition</li>
-            <li class="list-group-item">Favourite</li>
-          </ul>
-          <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
-          </div>
-        </div>
+      <div class="container-fluid col-lg-12">
+        <div class="row">
+          <% for (let book of books) { %>
+            <!-- CARD ELEMENT -->
+            <div class="card" style="width: 15rem;">
+              <img src= "<%= book.picture_url %>" class="card-img-top picture-size" alt="book">
+              <div class="card-body">
+                <h5 class="card-title"> <%= book.title %> </h5>
+                <p class="card-text"> <%= book.description %> </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $<%= book.price %></li>
+                <li class="list-group-item">Condition: <%= book.condition %></li>
+                <li class="list-group-item">Favourite</li>
+              </ul>
+              <div class="card-body">
+                <!-- <a href="#" class="card-link">Email</a> -->
+                <a href="mailto:raunak.00o201@gmail.com" class="card-link"> <%= book.email %> </a>
+                <a href="#" class="card-link">Another link</a>
+              </div>
+            </div>
+         <% } %>
 
+        </div>
       </div>
-
     </section>
 
     <!-- Bootstrap Bundle with Popper -->

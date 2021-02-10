@@ -7,7 +7,11 @@
   justify-content: center;
 }
 
-.container-fluid {
+.picture-size {
+  padding: 2em;;
+}
+
+.nav-background-color {
   flex-direction: column;
   background-color: #D45B5B;
 }
@@ -37,6 +41,11 @@
 
 .d-flex {
   width: 50%;
+}
+
+.card {
+  margin: 1em;
+  border: #D45B5B solid;
 }
 
 /* The container <div> - needed to position the dropdown content */
