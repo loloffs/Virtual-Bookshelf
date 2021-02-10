@@ -57,16 +57,20 @@ module.exports = (pool) => {
         const templateVars = { books: results};
        });
      } else {
-        getAllListings()
+        db.getAllListings()
           .then(rows => {
             const templateVars = { books: rows };
-
+            console.log(req.query);
+            res.render("index", templateVars);
           })
      };
-     res.render("index", templateVars);
-  }
-  return app;  //What is this doing? Ask mentor
+
+
+    })
+
+    return app;  //What is this doing? Ask mentor
 };
+
 
 
 
