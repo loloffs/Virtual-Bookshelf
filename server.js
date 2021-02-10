@@ -46,7 +46,7 @@ const searchRoutes = require("./routes/searchRoutes");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-app.use("/api/search", searchRoutes(db));
+// app.use("/api/search", searchRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
