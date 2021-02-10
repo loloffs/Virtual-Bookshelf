@@ -16,9 +16,9 @@ module.exports = (pool) => {
 
     //Connect the drop down menu to the backend
 
-    //Use select element in html (as opposed to a navigational drop down)
+    //Use select element in html (as opposed to a navigational drop down)?
 
-    //Make a second drop down for order by (form drop down box)
+    //Make a second drop down for order by (form drop down box)?
 
     //Divide this function up and make separate search routes?
     //We should have two optional drop down menu's (form data drop down menu's as linked in discord chat) for the search type and the order in the same form to get the query paramaters working
@@ -67,6 +67,7 @@ module.exports = (pool) => {
   }
   return app;  //What is this doing? Ask mentor
 };
+
 
 
 
