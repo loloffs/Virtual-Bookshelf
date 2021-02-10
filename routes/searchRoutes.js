@@ -64,7 +64,7 @@ module.exports = (pool) => {
           })
      };
      res.render("index", templateVars);
-  }
+  })
   return app;  //What is this doing? Ask mentor
 };
 
