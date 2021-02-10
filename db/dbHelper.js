@@ -28,8 +28,9 @@ module.exports = (pool) => {
 
   const getFavouritesForUser = function(userID) {
     return pool.query(`
-    SELECT * FROM favourites
-    WHERE user_id = $1;
+    SELECT * FROM listings
+    JOIN users ON listings.seller_id = users.id
+    WHERE seller_id = 1$;
     `, [userID])
     .then(res => {
       return res.rows;
@@ -72,7 +73,7 @@ module.exports = (pool) => {
   };
 
 
-  // Needs work
+  // Needs work...?
   const favouriteAListing = function(userID, listingID) {
     return pool.query(`
     INSERT INTO favourites (user_id, listing_id)

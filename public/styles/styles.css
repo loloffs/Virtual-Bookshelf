@@ -1,6 +1,7 @@
 #navbarSupportedContent {
   justify-content: center;
 }
+
 .logo-div {
   display: flex;
   background-color: #D45B5B;
@@ -16,15 +17,10 @@
   background-color: #D45B5B;
 }
 
-/* .nav-item {
-  padding: 0 10% 0 10%;
-} */
-
 .nav-link {
   color: #FFF!important;
   font-weight: bold;
   font-size: 1.5rem;
-
 }
 
 .row {
@@ -33,21 +29,29 @@
 }
 
 .search {
-  margin-top: 10px;
-  padding: 10px;
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
+  padding: 10px;
 }
 
 .d-flex {
   width: 50%;
+  margin: .5em;
+}
+
+.button-width {
+  width: 130px;;
 }
 
 .card {
   margin: 1em;
+  border: #D45B5B solid 1px;
+}
+.card:hover {
+  /* box-shadow: 10px 10px 5px grey; */
   border: #D45B5B solid;
 }
-
 
 /* The container <div> - needed to position the dropdown content */
 .dropdown {
@@ -112,3 +116,5 @@ h1 {
 title {
   color: #D45B5B;
 }
+
+
