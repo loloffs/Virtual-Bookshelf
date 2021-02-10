@@ -74,7 +74,7 @@ app.post("/listings/:listing_id/favourite", (req, res) => {
   const listingID = req.params.listing_id;
 
   if(!userID) {
-   return res.redirect("/main");
+   return res.redirect("/index");
   }
 
   db.isListingFavourited(userID, listingID)
@@ -95,6 +95,23 @@ app.post("/listings/:listing_id/favourite", (req, res) => {
 
 // Handle case for unfavourite
 
+app.post("/listings/:listing_id/unfavourite", (req, res) => {
+
+  const userID = req.session.user_id;
+  const listingID = req.params.listing_id; // ???
+
+  if (!userID) {
+    res.redirect("/index");
+  }
+
+  db.unfavourite(userID, listingID)
+    .then(() => {
+      // res.redirect("/my_listings");
+    });
+
+
+});
+
 
 // DELETE delete your listing(s): Done
 
@@ -102,7 +119,7 @@ app.post("/main/my_listings/:listing_id/delete", (req, res) => {
   const userID = req.session.user_id;
   const listingID = req.params.listing_id;
   if (!userID) {
-    res.redirect("/main");
+    res.redirect("/index");
   }
   db.deleteListing(userID, listingID)
     .then(() => {
@@ -152,7 +169,7 @@ app.post("/login", (req, res) => {
   const userID = db.randomUserID();
   console.log(userID);
   req.session.user_id = userID;
-  res.send("Sucess",);
+  res.send("Sucess");
 });
 
 

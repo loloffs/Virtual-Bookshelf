@@ -94,6 +94,12 @@ module.exports = (pool) => {
     })
   };
 
+  const unfavourite = function(userID, listingID) {
+    return pool.query(`
+    DELETE FROM favourites WHERE user_id = $1 AND listing_id = $2;
+    `, [userID, listingID])
+  };
+
 
   //Search funtions
   const searchByMaxPrice = function(bookPrice, orderBy) {
@@ -153,7 +159,8 @@ module.exports = (pool) => {
     searchByAuthor,
     randomUserID,
     favouriteAListing,
-    getAllListings
+    getAllListings,
+    unfavourite
   };
 
 }
