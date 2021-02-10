@@ -64,17 +64,18 @@
               <img src= "<%= book.picture_url %>" class="card-img-top picture-size" alt="book">
               <div class="card-body">
                 <h5 class="card-title"> <%= book.title %> </h5>
+                <p class="card-text"> <i><%= book.author %></i> </p>
                 <p class="card-text"> <%= book.description %> </p>
               </div>
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= book.price %></li>
                 <li class="list-group-item">Condition: <%= book.condition %></li>
-                <li class="list-group-item">Favourite</li>
+                <li id="favourite" class="list-group-item"><button>Favourite</button> <i hidden class="fas fa-heart"></i></li>
               </ul>
               <div class="card-body">
                 <!-- <a href="#" class="card-link">Email</a> -->
                 <a href="mailto:raunak.00o201@gmail.com" class="card-link"> <%= book.email %> </a>
-                <a href="#" class="card-link">Another link</a>
+                <!-- <a href="#" class="card-link">Another link</a> -->
               </div>
             </div>
          <% } %>
