@@ -82,19 +82,28 @@ module.exports = (pool) => {
     `, [userID, listingID])
   };
 
+  // const isListingFavourited = function(userID, listingID) {
+  //   return new Promise((resolve) => {
+  //     pool.query(`SELECT EXISTS (SELECT 1 FROM favourites WHERE user_id = $1 AND listing_id = $2)`, [userID, listingID])
+  //     .then((res) => {
+  //       console.log("Unknown res: ", res);
+  //       if(res) {
+  //       resolve(true);
+  //     } else {
+  //       resolve(false);
+  //     }
+  //     })
+  //   })
+  // };
+
   const isListingFavourited = function(userID, listingID) {
-    return new Promise((resolve) => {
-      pool.query(`SELECT EXISTS (SELECT 1 FROM favourites WHERE user_id = $1 AND listing_id = $2)`, [userID, listingID])
-      .then((res) => {
-        console.log("Unknown res: ", res);
-        if(res) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-      })
-    })
-  };
+    return pool.query(`
+    SELECT EXISTS (SELECT 1 FROM favourites
+    WHERE user_id = $1 AND listing_id = $2)`, [userID, listingID])
+    .then(res => {
+      return res.rows;
+    }).catch(err => console.log(err));
+}
 
   const unfavourite = function(userID, listingID) {
     return pool.query(`
@@ -126,8 +135,6 @@ module.exports = (pool) => {
 
   const searchByTitle = function(bookTitle) {
     const queryString = `SELECT * FROM listings WHERE title LIKE $1`;
-    console.log(queryString);
-    console.log(bookTitle);
     const values = [`%${bookTitle}%`]
     return pool.query(queryString, values)
     .then(res => {

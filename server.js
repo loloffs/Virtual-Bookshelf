@@ -58,8 +58,6 @@ app.get("/", (req, res) => {
     .then(rows => {
 
       const templateVars = { books: rows };
-      console.log(rows);
-
       res.render("index", templateVars);
 
     });

@@ -69,8 +69,8 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= book.price %></li>
                 <li class="list-group-item">Condition: <%= book.condition %></li>
-              <form action="/api/users/<%= book.id %>/favourites" method="POST">
-                <li id="favourite" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
+              <form action="/api/users/<%= book.id %>/favourite" method="POST">
+                <li id="favourite-button" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
               </form>
               </ul>
               <div class="card-body">
