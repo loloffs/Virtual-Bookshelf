@@ -40,7 +40,6 @@ app.get("/favourites", (req, res) => {
   }
   db.getFavouritesForUser(userID)
     .then((favourites) => {
-      console.log("favourites: ", favourites);
       const templateVars = { favourites };
 
       res.render("favourites", templateVars);
@@ -70,7 +69,6 @@ app.post("/create_listing", (req, res) => {
 
 
 // GET my_listings for logged in user: done
-
 app.get("/myListings", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
@@ -78,12 +76,11 @@ app.get("/myListings", (req, res) => {
   }
   db.getUsersListings(userID)
     .then((myListings) => {
-      console.log("My Listings: ", myListings);
+
       const templateVars = { myListings };
       res.render("myListings", templateVars);
     });
 });
-
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
@@ -91,27 +88,34 @@ app.post("/:listing_id/favourite", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
-  console.log("USER ID: ", userID);
-  console.log("LISTING ID: ", listingID);
-
   if(!userID) {
    return res.redirect("/index");
   }
 
-  // db.isListingFavourited(userID, listingID)
+  db.isListingFavourited(userID, listingID)
+  .then((result) => {
+
+    if (result[0].exists) {
+      db.unfavourite(userID, listingID);
+      console.log('unfavorited');
+      return res.redirect("/")
+    }
+
+    db.favouriteAListing(userID, listingID)
+    .then(() => {
+      console.log('favorited');
+      return res.redirect("/");
+    });
+  });
+});
+
+
+
+ // db.isListingFavourited(userID, listingID)
   //   .then((isFavourited) => {
   //     if(isFavourited) {
   //       return res.status(403).send("Listing already favourited");
   //     } else {
-
-        db.favouriteAListing(userID, listingID)
-          .then((favourite) => {
-            return res.json(favourite);
-            // return res.redirect("/favourites");
-        });
-      // }
-    // })
-});
 
 
 
@@ -120,22 +124,22 @@ app.post("/:listing_id/favourite", (req, res) => {
 
 // Handle case for unfavourite
 
-app.post("/listings/:listing_id/unfavourite", (req, res) => {
+// app.post("/listings/:listing_id/unfavourite", (req, res) => {
 
-  const userID = req.session.user_id;
-  const listingID = req.params.listing_id; // ???
+//   const userID = req.session.user_id;
+//   const listingID = req.params.listing_id; // ???
 
-  if (!userID) {
-    res.redirect("/index");
-  }
+//   if (!userID) {
+//     res.redirect("/index");
+//   }
 
-  db.unfavourite(userID, listingID)
-    .then(() => {
-      // res.redirect("/my_listings");
-    });
+//   db.unfavourite(userID, listingID)
+//     .then(() => {
+//       // res.redirect("/my_listings");
+//     });
 
 
-});
+// });
 
 
 // DELETE delete your listing(s): Done
@@ -192,7 +196,6 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 // Second attempt where clicking "Login" button logs in as a random user
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
-  console.log(userID);
   req.session.user_id = userID;
   res.send("Sucess");
 });
