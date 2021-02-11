@@ -44,10 +44,10 @@ module.exports = (pool) => {
 
   const createNewListing = function(listingObj) {
     return pool.query(`
-    INSERT INTO listings (seller_id, title, description, price, author, condition, picture_url)
+    INSERT INTO listings (title, description, price, author, condition, picture_url, seller_id)
     VALUES ($1, $2, $3, $4, $5, $6, $7)
     RETURNING *;
-    `, [listingObj.seller_id, listingObj.title, listingObj.description, listingObj.price, listingObj.author, listingObj.condition, listingObj.picture_url])
+    `, [listingObj.title, listingObj.description, listingObj.price, listingObj.author, listingObj.condition, listingObj.picture_url, listingObj.seller_id])
     .then(res => {
       return res.rows[0];
     })

@@ -9,6 +9,9 @@ const express = require('express');
 const router  = express.Router();
 const app = express();
 const DBHELPER = require('../db/dbHelper');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = (pool) => {
   const db = DBHELPER(pool);
@@ -59,11 +62,17 @@ app.post("/create_listing", (req, res) => {
   }
 
   const newListing = req.body;
+
   newListing.seller_id = userID;
 
   db.createNewListing(newListing)
-    .then((newlyCreatedListing) => {
-      res.json(newlyCreatedListing);
+  .then(() => {
+    db.getUsersListings(userID)
+      .then((res1) => {
+        let templateVars = { myListings: res1 };
+        return res.render("myListings", templateVars);
+      });
+
     });
 });
 
@@ -78,6 +87,7 @@ app.get("/myListings", (req, res) => {
     .then((myListings) => {
 
       const templateVars = { myListings };
+      console.log(templateVars);
       res.render("myListings", templateVars);
     });
 });
@@ -98,13 +108,13 @@ app.post("/:listing_id/favourite", (req, res) => {
     if (result[0].exists) {
       db.unfavourite(userID, listingID);
       console.log('unfavorited');
-      return res.redirect("/")
+      return res.redirect("/api/users/favourites")
     }
 
     db.favouriteAListing(userID, listingID)
     .then(() => {
       console.log('favorited');
-      return res.redirect("/");
+      return res.redirect("/api/users/favourites");
     });
   });
 });
