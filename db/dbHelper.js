@@ -105,8 +105,9 @@ module.exports = (pool) => {
 
   //Search funtions
   const searchByMaxPrice = function(bookPrice, orderBy) {
-    const queryString = `SELECT * FROM listings WHERE price <= $1 ORDER BY $2`
-    const values = [bookPrice, orderBy]
+    let queryString = `SELECT * FROM listings WHERE price <= $1 ORDER BY `
+    queryString += orderBy
+    const values = [bookPrice]
     return pool.query(queryString, values)
     .then(res => {
       return res.rows;
@@ -115,8 +116,9 @@ module.exports = (pool) => {
   };
 
   const searchByMinPrice = function(bookPrice, orderBy) {
-    const queryString = `SELECT * FROM listings WHERE price >= $1 ORDER BY $2 DESC`
-    const values = [bookPrice, orderBy]
+    let queryString = `SELECT * FROM listings WHERE price >= $1 ORDER BY `
+    queryString += orderBy
+    const values = [bookPrice]
     return pool.query(queryString, values)
     .then(res => {
       return res.rows;
@@ -124,10 +126,9 @@ module.exports = (pool) => {
     .catch(err => console.error('query error', err.stack));
   };
 
-  const searchByTitle = function(bookTitle) {
-    const queryString = `SELECT * FROM listings WHERE title LIKE $1`;
-    console.log(queryString);
-    console.log(bookTitle);
+  const searchByTitle = function(bookTitle, orderBy) {
+    let queryString = `SELECT * FROM listings WHERE title LIKE $1 ORDER BY `
+    queryString += orderBy
     const values = [`%${bookTitle}%`]
     return pool.query(queryString, values)
     .then(res => {
@@ -136,8 +137,9 @@ module.exports = (pool) => {
     .catch(err => console.error('query error', err.stack));
   };
 
-  const searchByAuthor = function(bookAuthor) {
-    const queryString = `SELECT * FROM listings WHERE author LIKE $1`
+  const searchByAuthor = function(bookAuthor, orderBy) {
+    let queryString = `SELECT * FROM listings WHERE author LIKE $1 ORDER BY `
+    queryString += orderBy
     const values = [`%${bookAuthor}`]
     return pool.query(queryString, values)
     .then(res => {
