@@ -36,20 +36,71 @@
     <!-- <div class="search">
       <form class="d-flex" action="/api/search/main/search" method="GET">
         <input type="hidden" name="searchType" value="title">
-        <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
+        <input class="form-control input-cnl me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" name="author" placeholder="Author" aria-label="Search">
+        <input class="form-control input-cnl me-2" type="search" name="author" placeholder="Author" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
       <form class="d-flex">
-        <input class="form-control me-2" type="search" name="minPrice" placeholder="Min Price" aria-label="Search">
-        <input class="form-control me-2" type="search" name="maxPrice" placeholder="Max Price" aria-label="Search">
+        <input class="form-control input-cnl me-2" type="search" name="minPrice" placeholder="Min Price" aria-label="Search">
+        <input class="form-control input-cnl me-2" type="search" name="maxPrice" placeholder="Max Price" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
     </div> -->
 
+    <!-- title, description, price, author, condition, picture_url -->
+
+    <!-- <div class="create-new-listing">
+      <form action="" method="POST">
+        <input type="text" placeholder="Title">
+        <input type="text" placeholder="Description">
+        <input type="text" placeholder="Price">
+        <input type="text" placeholder="Author">
+        <input type="text" placeholder="Condition">
+        <input type="text" placeholder="Picture URL">
+        <button type="submit">Submit</button>
+      </form>
+    </div> -->
+    <div class="heading-cnl">
+      <h2>Create a New Listing</h2>
+    </div>
+    <form action="/api/users/create_listing" method="POST">
+      <div class="cnl">
+        <!-- Title -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Title</span>
+          <input type="text" name="title" class="form-control input-cnl" placeholder="Insert title" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <!-- Description -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Description</span>
+          <input type="text" name="description" class="form-control input-cnl" placeholder="Insert description" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <!-- Price -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Price</span>
+          <input type="number" name="price" class="form-control input-cnl" placeholder="Insert price" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <!-- Author -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Author</span>
+          <input type="text" name="author" class="form-control input-cnl" placeholder="Insert author" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <!-- Condition -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Condition</span>
+          <input type="text" name="condition" class="form-control input-cnl" placeholder="Insert condition" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <!-- Picture URL -->
+        <div class="input-group flex-nowrap div-cnl">
+          <span class="input-group-text span-cnl" id="addon-wrapping">Picture URL</span>
+          <input type="url" name="picture_url" class="form-control input-cnl" placeholder="Insert picture's url" aria-label="Username"    aria-describedby="addon-wrapping">
+        </div>
+        <button class="btn btn-outline-danger button-cnl" type="submit">Create</button>
+      </div>
+    </form>
     <!-- SECTION LISTINGS -->
     <section class="listings">
       <div class="container-fluid col-lg-12">

@@ -48,10 +48,6 @@ body h1 {
   margin: .5em;
 }
 
-.button-width {
-  width: 130px;
-}
-
 .card {
   margin: 1em;
   border: #D45B5B solid 1px;
@@ -114,6 +110,33 @@ body h1 {
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {
   background-color: #F86F0F;
+}
+
+.cnl {
+  margin: 2rem;
+}
+
+.span-cnl {
+  width: 8rem;
+  border: #D45B5B solid 1px;
+}
+
+.input-cnl {
+  border: #D45B5B solid 1px;
+}
+
+.button-cnl {
+  width: 130px;
+  margin-top: 1rem;
+}
+
+.heading-cnl {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 2rem;
+  color: #D45B5B;
+  font-size: 30pt;
 }
 
 nav {
