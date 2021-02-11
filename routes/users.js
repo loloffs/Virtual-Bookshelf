@@ -40,7 +40,7 @@ app.get("/favourites", (req, res) => {
   }
   db.getFavouritesForUser(userID)
     .then((favourites) => {
-      console.log("login favourites:",favourites);
+      console.log("favourites: ", favourites);
       const templateVars = { favourites };
 
       res.render("favourites", templateVars);
@@ -78,6 +78,7 @@ app.get("/myListings", (req, res) => {
   }
   db.getUsersListings(userID)
     .then((myListings) => {
+      console.log("My Listings: ", myListings);
       const templateVars = { myListings };
       res.render("myListings", templateVars);
     });
