@@ -20,6 +20,7 @@
     <!-- JQUERY -->
     <script src="/vendor/jquery-3.0.0.js"></script>
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/heart.js"></script>
 
     <title>Virtual Bookshelf</title>
 
@@ -68,7 +69,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= book.price %></li>
                 <li class="list-group-item">Condition: <%= book.condition %></li>
-              <form action="/api/users/<%= book.id %>/favourite" method="POST">
+              <form action="/api/users/listings/<%= book.id %>/favourite" method="POST">
                 <li id="favourite-button" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
               </form>
               </ul>
