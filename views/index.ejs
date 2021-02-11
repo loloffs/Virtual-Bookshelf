@@ -36,13 +36,19 @@
         <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" name="author" placeholder="Author" aria-label="Search">
+      <form class="d-flex" action="/api/search/main/search" method="GET">
+        <input type="hidden" name="searchType" value="author">
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Author" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" name="minPrice" placeholder="Min Price" aria-label="Search">
-        <input class="form-control me-2" type="search" name="maxPrice" placeholder="Max Price" aria-label="Search">
+      <form class="d-flex" action="/api/search/main/search" method="GET">
+        <input type="hidden" name="searchType" value="minPrice">
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Min Price" aria-label="Search">
+        <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
+      </form>
+      <form class="d-flex" action="/api/search/main/search" method="GET">
+        <input type="hidden" name="searchType" value="maxPrice">
+        <input class="form-control me-2" type="search" name="searchText" placeholder="Max Price" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
     </div>

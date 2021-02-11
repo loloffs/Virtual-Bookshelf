@@ -138,7 +138,7 @@ module.exports = (pool) => {
 
   const searchByAuthor = function(bookAuthor) {
     const queryString = `SELECT * FROM listings WHERE author LIKE $1`
-    const values = [bookAuthor]
+    const values = [`%${bookAuthor}`]
     return pool.query(queryString, values)
     .then(res => {
       return res.rows;
