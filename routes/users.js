@@ -63,7 +63,7 @@ app.post("/create_listing", (req, res) => {
 
 // GET my_listings for logged in user: done
 
-app.get("/my_listings", (req, res) => {
+app.get("/myListings", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
     return res.redirect("/main");
@@ -71,7 +71,7 @@ app.get("/my_listings", (req, res) => {
   db.getUsersListings(userID)
     .then((myListings) => {
       const templateVars = { myListings };
-    
+      console.log(templateVars);
       res.render("myListings", templateVars);
 
     });
