@@ -1,0 +1,129 @@
+// See: https://sass-lang.com/
+
+body {
+  background-color: #EEE;
+
+  h1 {
+    color: #244751;
+  }
+}
+#navbarSupportedContent {
+  justify-content: center;
+}
+
+.logo-div {
+  display: flex;
+  background-color: #D45B5B;
+  justify-content: center;
+}
+
+.picture-size {
+  padding: 2em;;
+}
+
+.nav-background-color {
+  flex-direction: column;
+  background-color: #D45B5B;
+}
+
+.nav-link {
+  color: #FFF!important;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.row {
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.d-flex {
+  width: 50%;
+  margin: .5em;
+}
+
+.button-width {
+  width: 130px;;
+}
+
+.card {
+  margin: 1em;
+  border: #D45B5B solid 1px;
+}
+.card:hover {
+  /* box-shadow: 10px 10px 5px grey; */
+  border: #D45B5B solid;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  /* display: flex; */
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #f8bf12;
+  color: white;
+  padding: 16px;
+  font-size: 30px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  width:250px;
+	height:100px;
+}
+
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  width:250px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #F86F0F;}
+
+nav {
+ background-color: #D45B5B;
+ width: 100%;
+}
+body {
+  background-color: #F6F3EF;
+  font-family: 'Ubuntu';
+}
+h1 {
+  color: #D45B5B;
+}
+title {
+  color: #D45B5B;
+}
+
+
