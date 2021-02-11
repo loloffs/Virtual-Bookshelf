@@ -63,13 +63,13 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= favourite.price %></li>
                 <li class="list-group-item">Condition: <%= favourite.condition %></li>
-              <form action="/api/users/<%= favourite.id %>/favourite" method="POST">
+              <form action="/api/users/<%= favourite.id %>/favourites" method="POST">
                 <li id="favourite" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
               </form>
               </ul>
               <div class="card-body">
                 <!-- <a href="#" class="card-link">Email</a> -->
-                <a href="mailto:raunak.00o201@gmail.com" class="card-link"> <%= favourite.email %> </a>
+                <a href="mailto:<%= favourite.email %>" class="card-link"> <%= favourite.email %> </a>
                 <!-- <a href="#" class="card-link">Another link</a> -->
               </div>
             </div>

@@ -29,8 +29,8 @@ module.exports = (pool) => {
   const getFavouritesForUser = function(userID) {
     return pool.query(`
     SELECT * FROM listings
-    JOIN users ON listings.seller_id = users.id
-    WHERE seller_id = $1;
+    JOIN favourites ON listing_id = listings.id
+    WHERE user_id = $1;
     `, [userID])
     .then(res => {
       return res.rows;
