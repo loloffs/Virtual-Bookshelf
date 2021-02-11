@@ -55,14 +55,13 @@ app.use("/api/search", searchRoutes(db));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  getAllListings()
+  if (req.session.user_id) {
+    getAllListings(req.session.user_id)
     .then(rows => {
-
       const templateVars = { books: rows };
       res.render("index", templateVars);
-
     });
-
+  }
 });
 
 

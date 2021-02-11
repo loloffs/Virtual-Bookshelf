@@ -1,3 +1,5 @@
+const { promiseImpl } = require("ejs");
+
 module.exports = (pool) => {
   const getUsersListings = function(userID) {
     return pool.query(`
@@ -12,14 +14,24 @@ module.exports = (pool) => {
     }));
   };
 
-  const getAllListings = function() {
-    return pool.query(`
+  const getAllListings = function(user_id) {
+    const listingsQuery = pool.query(`
     SELECT listings.*, users.email
     FROM listings
-    JOIN users ON users.id = seller_id;
-    `)
+    JOIN users ON users.id = seller_id`)
+    const favouritesQuery =  pool.query('SELECT * FROM favourites WHERE user_id = $1', [user_id])
+    return Promise.all([listingsQuery, favouritesQuery])
     .then(res => {
-      return res.rows;
+      const listings = res[0].rows
+      const favourites = res[1].rows
+      for (const favourite of favourites) {
+        const foundListing = listings.find( listing => {
+        return listing.id === favourite.listing_id;
+        })
+        foundListing.isFavourite = true
+      }
+      console.log(listings)
+      return listings;
     })
     .catch((error => {
       console.log("Error message", error)
