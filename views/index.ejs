@@ -32,8 +32,14 @@
     <!-- SECTION SEARCH -->
     <div class="search">
       <form class="d-flex" action="/api/search/main/search" method="GET">
-        <input type="hidden" name="searchType" value="title">
-        <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
+        <!-- <input type="hidden" name="searchType" value="title"> -->
+        <label for="searchType">Search By:</label>
+        <select name="searchType" id="searchType">
+          <option value="title">By Title</option>
+          <option value="author">By Author</option>
+         <option value="maxPrice">Max Price</option>
+         <option value="minPrice">Min Price</option>
+        <input class="form-control me-2" type="text" name="searchText" placeholder="Search" aria-label="Search">
         <label for="searchOrder">Sort By:</label>
          <select name="searchOrder" id="searchOrder">
           <option value="lowPrice">Lowest Price</option>
@@ -43,7 +49,7 @@
          </select>
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
-      <form class="d-flex" action="/api/search/main/search" method="GET">
+      <!-- <form class="d-flex" action="/api/search/main/search" method="GET">
         <input type="hidden" name="searchType" value="author">
         <input class="form-control me-2" type="text" name="searchText" placeholder="Author" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
@@ -57,7 +63,7 @@
         <input type="hidden" name="searchType" value="maxPrice">
         <input class="form-control me-2" type="search" name="searchText" placeholder="Max Price" aria-label="Search">
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
-      </form>
+      </form> -->
     </div>
 
     <!-- SECTION LISTINGS -->
