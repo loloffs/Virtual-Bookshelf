@@ -30,7 +30,7 @@ module.exports = (pool) => {
     return pool.query(`
     SELECT * FROM listings
     JOIN users ON listings.seller_id = users.id
-    WHERE seller_id = 1$;
+    WHERE seller_id = $1;
     `, [userID])
     .then(res => {
       return res.rows;
