@@ -6,7 +6,7 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+// const router  = express.Router();
 const app = express();
 const DBHELPER = require('../db/dbHelper');
 
@@ -20,32 +20,16 @@ module.exports = (pool) => {
 
 // GET favourites for logged in user: done
 
-// app.get("/favourites", (req, res) => {
-// const userID = req.session.user_id;
-//   if (!userID) {
-//     return res.redirect("/index");
-//   }
-//   db.getFavouritesForUser(userID)
-//     .then((favourites) => {
-//       const templateVars = { favourites };
-//       res.render("favourites", templateVars);
-//     });
-// });
-
-// I think this is closest
 app.get("/favourites", (req, res) => {
-  const userID = req.session.user_id;
+const userID = req.session.user_id;
   if (!userID) {
-    return res.redirect("/index");
+    return res.redirect("/main");
   }
   db.getFavouritesForUser(userID)
     .then((favourites) => {
       const templateVars = { favourites };
-
       res.render("favourites", templateVars);
-
     });
-
 });
 
 
@@ -69,77 +53,47 @@ app.post("/create_listing", (req, res) => {
 
 
 // GET my_listings for logged in user: done
-app.get("/myListings", (req, res) => {
+
+app.get("/my_listings", (req, res) => {
   const userID = req.session.user_id;
   if (!userID) {
-    return res.redirect("/index");
+    return res.redirect("/main");
   }
   db.getUsersListings(userID)
     .then((myListings) => {
-
       const templateVars = { myListings };
-      res.render("myListings", templateVars);
+      res.render("my_listings", templateVars);
     });
 });
 
+
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
-app.post("/:listing_id/favourite", (req, res) => {
+app.post("/listings/:listing_id/favourite", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
   if(!userID) {
-   return res.redirect("/index");
+   return res.redirect("/main");
   }
 
   db.isListingFavourited(userID, listingID)
-  .then((result) => {
-
-    if (result[0].exists) {
-      db.unfavourite(userID, listingID);
-      console.log('unfavorited');
-      return res.redirect("/")
-    }
-
-    db.favouriteAListing(userID, listingID)
-    .then(() => {
-      console.log('favorited');
-      return res.redirect("/");
-    });
-  });
+    .then((isFavourited) => {
+      if(isFavourited) {
+        return res.status(403).send("Listing already favourited");
+      } else {
+        db.favouriteAListing(userID, listingID)
+          .then((favourite) => {
+            res.json(favourite);
+        });
+      }
+    })
 });
-
-
-
- // db.isListingFavourited(userID, listingID)
-  //   .then((isFavourited) => {
-  //     if(isFavourited) {
-  //       return res.status(403).send("Listing already favourited");
-  //     } else {
-
-
 
 
 
 
 // Handle case for unfavourite
-
-// app.post("/listings/:listing_id/unfavourite", (req, res) => {
-
-//   const userID = req.session.user_id;
-//   const listingID = req.params.listing_id; // ???
-
-//   if (!userID) {
-//     res.redirect("/index");
-//   }
-
-//   db.unfavourite(userID, listingID)
-//     .then(() => {
-//       // res.redirect("/my_listings");
-//     });
-
-
-// });
 
 
 // DELETE delete your listing(s): Done
@@ -148,7 +102,7 @@ app.post("/main/my_listings/:listing_id/delete", (req, res) => {
   const userID = req.session.user_id;
   const listingID = req.params.listing_id;
   if (!userID) {
-    res.redirect("/index");
+    res.redirect("/main");
   }
   db.deleteListing(userID, listingID)
     .then(() => {
@@ -197,7 +151,7 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
   req.session.user_id = userID;
-  res.send("Sucess");
+  res.send("Sucess",);
 });
 
 
