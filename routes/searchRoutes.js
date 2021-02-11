@@ -13,8 +13,14 @@ module.exports = (pool) => {
 
     let orderBy = "price";
 
-    if (searchOrder === "highestPrice") {
+    if (searchOrder === "highPrice") {
       orderBy = "price DESC";
+    } else if (searchOrder === "lowPrice") {
+      orderBy = "price";
+    } else if (searchOrder === "byAuthor") {
+      orderBy = "author";
+    } else if (searchOrder === "byTitle") {
+      orderBy = "title";
     }
     if (searchType === "maxPrice") {
       if (isNaN(searchText)) {

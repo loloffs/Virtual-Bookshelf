@@ -35,6 +35,13 @@
       <form class="d-flex" action="/api/search/main/search" method="GET">
         <input type="hidden" name="searchType" value="title">
         <input class="form-control me-2" type="text" name="searchText" placeholder="Title" aria-label="Search">
+        <label for="searchOrder">Sort By:</label>
+         <select name="searchOrder" id="searchOrder">
+          <option value="lowPrice">Lowest Price</option>
+          <option value="highPrice">Highest Price</option>
+          <option value="byTitle">By Title</option>
+          <option value="byAuthor">By Author</option>
+         </select>
         <button class="btn btn-outline-danger button-width" type="submit"><i class="fas fa-search"></i> Search</button>
       </form>
       <form class="d-flex" action="/api/search/main/search" method="GET">
