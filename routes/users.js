@@ -9,6 +9,9 @@ const express = require('express');
 // const router  = express.Router();
 const app = express();
 const DBHELPER = require('../db/dbHelper');
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 module.exports = (pool) => {
   const db = DBHELPER(pool);
@@ -43,11 +46,17 @@ app.post("/create_listing", (req, res) => {
   }
 
   const newListing = req.body;
+
   newListing.seller_id = userID;
 
   db.createNewListing(newListing)
-    .then((newlyCreatedListing) => {
-      res.json(newlyCreatedListing);
+  .then(() => {
+    db.getUsersListings(userID)
+      .then((res1) => {
+        let templateVars = { myListings: res1 };
+        return res.render("myListings", templateVars);
+      });
+
     });
 });
 
@@ -62,32 +71,38 @@ app.get("/my_listings", (req, res) => {
   db.getUsersListings(userID)
     .then((myListings) => {
       const templateVars = { myListings };
-      res.render("my_listings", templateVars);
+    
+      res.render("myListings", templateVars);
+
     });
 });
 
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
-app.post("/listings/:listing_id/favourite", (req, res) => {
+app.post("/:listing_id/favourite", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
   if(!userID) {
-   return res.redirect("/main");
+   return res.redirect("/index");
   }
 
   db.isListingFavourited(userID, listingID)
-    .then((isFavourited) => {
-      if(isFavourited) {
-        return res.status(403).send("Listing already favourited");
-      } else {
-        db.favouriteAListing(userID, listingID)
-          .then((favourite) => {
-            res.json(favourite);
-        });
-      }
-    })
+  .then((result) => {
+
+    if (result[0].exists) {
+      db.unfavourite(userID, listingID);
+      console.log('unfavorited');
+      return res.redirect("/api/users/favourites")
+    }
+
+    db.favouriteAListing(userID, listingID)
+    .then(() => {
+      console.log('favorited');
+      return res.redirect("/api/users/favourites");
+    });
+  });
 });
 
 
