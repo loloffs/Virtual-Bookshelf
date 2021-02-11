@@ -45,7 +45,6 @@ module.exports = (pool) => {
     } else if (searchType === "title") {
       db.searchByTitle(searchText, orderBy)
       .then((results) => {
-        console.log(results);
         const templateVars = { books: results };
         res.render("index", templateVars);
       });
@@ -59,7 +58,6 @@ module.exports = (pool) => {
         db.getAllListings()
           .then(rows => {
             const templateVars = { books: rows };
-            console.log(req.query);
             res.render("index", templateVars);
           })
      };
