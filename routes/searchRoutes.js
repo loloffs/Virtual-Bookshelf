@@ -65,7 +65,6 @@ module.exports = (pool) => {
             res.render("index", templateVars);
           })
      };
-     res.render("index", templateVars);
   })
   return app;
 };
