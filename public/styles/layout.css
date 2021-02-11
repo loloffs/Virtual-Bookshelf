@@ -156,3 +156,11 @@ h1 {
 title {
   color: #D45B5B;
 }
+
+.fas-fa-heart {
+  color: black;
+}
+
+.fas-fa-heart.activeHeartIcon {
+  color: red;
+}
