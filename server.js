@@ -59,6 +59,7 @@ app.get("/", (req, res) => {
     getAllListings(req.session.user_id)
     .then(rows => {
       const templateVars = { books: rows };
+      console.log(rows);
       res.render("index", templateVars);
     });
   }

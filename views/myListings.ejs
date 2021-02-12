@@ -108,6 +108,9 @@
           <% for (let listing of myListings) { %>
             <!-- CARD ELEMENT -->
             <div class="card" style="width: 15rem;">
+              <% if (listing.issold) { %>
+                <h2 class="sold-sign">SOLD</h2>
+              <% } %>
               <img src= "<%= listing.picture_url %>" class="card-img-top picture-size" alt="book">
               <div class="card-body">
                 <h5 class="card-title"> <%= listing.title %> </h5>
@@ -119,6 +122,14 @@
                 <li class="list-group-item">Condition: <%= listing.condition %></li>
               <form action="/api/users/<%= listing.id %>/favourite" method="POST">
                 <li id="favourite" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart"></i></li>
+              </form>
+              <!-- /my_listings/:listing_id/sold -->
+              <form action="/api/users/my_listings/<%= listing.id %>/sold" method="POST">
+                <li id="favourite" class="list-group-item"><button class="button-sold" type="submit">Sold</button>
+              </form>
+              <!-- /main/my_listings/:listing_id/delete -->
+              <form action="/api/users/my_listings/<%= listing.id %>/delete" method="POST">
+                <li id="favourite" class="list-group-item"><button type="submit">Delete</button>
               </form>
               </ul>
               <div class="card-body">

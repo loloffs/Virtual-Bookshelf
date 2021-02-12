@@ -48,7 +48,9 @@ console.log("TEST");
   });;
   });
 
-
+  $(".button-sold").click(() => {
+    $().toggle();
+  });
 
 
 

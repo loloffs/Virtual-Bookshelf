@@ -139,6 +139,10 @@ body h1 {
   font-size: 30pt;
 }
 
+.sold-sign {
+  color: red;
+}
+
 nav {
   background-color: #D45B5B;
   width: 100%;

@@ -132,10 +132,6 @@ body {
   margin-top: 1rem;
 }
 
-.div-cnl {
-  // border: #D45B5B solid 1px;
-}
-
 .heading-cnl {
   display: flex;
   flex-direction: row;
@@ -143,6 +139,10 @@ body {
   margin-top: 2rem;
   color: #D45B5B;
   font-size: 30pt;
+}
+
+.sold-sign {
+  color: red;
 }
 
 nav {

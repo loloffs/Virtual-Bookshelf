@@ -71,7 +71,7 @@ module.exports = (pool) => {
 
   const deleteListing = function(userID, listingID) {
     return pool.query(`
-    DELETE FROM listings WHERE user_id = $1 AND id = $2;
+    DELETE FROM listings WHERE seller_id = $1 AND id = $2;
     `, [userID, listingID])
   };
 

@@ -113,15 +113,15 @@ app.post("/:listing_id/favourite", (req, res) => {
 
 // DELETE delete your listing(s): Done
 
-app.post("/main/my_listings/:listing_id/delete", (req, res) => {
+app.post("/my_listings/:listing_id/delete", (req, res) => {
   const userID = req.session.user_id;
   const listingID = req.params.listing_id;
   if (!userID) {
-    res.redirect("/main");
+    res.redirect("/");
   }
   db.deleteListing(userID, listingID)
     .then(() => {
-      res.redirect("/my_listings");
+      res.redirect("/api/users/myListings");
     });
 });
 
@@ -132,13 +132,16 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
+  // console.log("HEY!");
+  // console.log("listingID", listingID);
+
   if(!userID) {
-   return res.redirect("/main");
+   return res.redirect("/");
   }
 
   db.markListingAsSold(listingID)
     .then(() => {
-      res.send("Sold");
+      res.redirect("/api/users/myListings");
     });
 
 });

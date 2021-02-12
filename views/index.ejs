@@ -60,6 +60,9 @@
           <% for (let book of books) { %>
             <!-- CARD ELEMENT -->
             <div class="card" style="width: 15rem;">
+              <% if (book.issold) { %>
+                <h2 class="sold-sign">SOLD</h2>
+              <% } %>
               <img src= "<%= book.picture_url %>" class="card-img-top picture-size" alt="book">
               <div class="card-body">
                 <h5 class="card-title"> <%= book.title %> </h5>
