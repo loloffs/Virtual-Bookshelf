@@ -23,6 +23,6 @@ CREATE TABLE listings (
 
 CREATE TABLE favourites (
   id SERIAL PRIMARY KEY NOT NULL,
-  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  listing_id INTEGER REFERENCES listings(id) ON DELETE CASCADE
+  user_id INTEGER REFERENCES users(id),
+  listing_id INTEGER REFERENCES listings(id)
 );

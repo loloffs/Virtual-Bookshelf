@@ -49,7 +49,7 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item">Price: $<%= favourite.price %></li>
                 <li class="list-group-item">Condition: <%= favourite.condition %></li>
-              <form action="/api/users/<%= favourite.id %>/favourite" method="POST">
+              <form action="/api/users/<%= favourite.listing_id %>/favourite" method="POST">
                 <li id="favourite" class="list-group-item"><button type="submit">Favourite</button> <i class="fas fa-heart activeHeartIcon"></i></li>
               </form>
               </ul>

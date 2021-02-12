@@ -40,10 +40,11 @@ module.exports = (pool) => {
   const getFavouritesForUser = function(userID) {
     return pool.query(`
     SELECT * FROM listings
-    JOIN favourites ON listing_id = listings.id
+    JOIN favourites ON favourites.listing_id = listings.id
     WHERE user_id = $1;
     `, [userID])
     .then(res => {
+      console.log(res.rows);
       return res.rows;
     })
     .catch((error => {
@@ -103,6 +104,8 @@ module.exports = (pool) => {
 }
 
   const unfavourite = function(userID, listingID) {
+    console.log(userID);
+    console.log(listingID);
     return pool.query(`
     DELETE FROM favourites WHERE user_id = $1 AND listing_id = $2;
     `, [userID, listingID])
