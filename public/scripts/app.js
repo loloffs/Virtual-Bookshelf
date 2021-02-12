@@ -48,9 +48,9 @@ console.log("TEST");
   });;
   });
 
-  $(".button-sold").click(() => {
-    $().toggle();
-  });
+  // $(".button-sold").click(() => {
+  //   $().toggle();
+  // });
 
 
 

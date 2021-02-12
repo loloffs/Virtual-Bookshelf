@@ -30,7 +30,6 @@ module.exports = (pool) => {
         })
         foundListing.isFavourite = true
       }
-      console.log(listings)
       return listings;
     })
     .catch((error => {
@@ -85,7 +84,6 @@ module.exports = (pool) => {
   };
 
 
-  // Needs work...?
   const favouriteAListing = function(userID, listingID) {
     return pool.query(`
     INSERT INTO favourites (user_id, listing_id)
@@ -94,19 +92,6 @@ module.exports = (pool) => {
     `, [userID, listingID])
   };
 
-  // const isListingFavourited = function(userID, listingID) {
-  //   return new Promise((resolve) => {
-  //     pool.query(`SELECT EXISTS (SELECT 1 FROM favourites WHERE user_id = $1 AND listing_id = $2)`, [userID, listingID])
-  //     .then((res) => {
-  //       console.log("Unknown res: ", res);
-  //       if(res) {
-  //       resolve(true);
-  //     } else {
-  //       resolve(false);
-  //     }
-  //     })
-  //   })
-  // };
 
   const isListingFavourited = function(userID, listingID) {
     return pool.query(`
@@ -121,6 +106,12 @@ module.exports = (pool) => {
     return pool.query(`
     DELETE FROM favourites WHERE user_id = $1 AND listing_id = $2;
     `, [userID, listingID])
+    .then(() => {
+      console.log("Deleted!")
+    })
+    .catch((err) => {
+      console.log("Error!", err)
+    })
   };
 
 

@@ -91,6 +91,9 @@ app.post("/:listing_id/favourite", (req, res) => {
   db.isListingFavourited(userID, listingID)
   .then((result) => {
 
+    console.log("RESULT: ", result);
+    console.log("RESULT: ", result[0].exists);
+
     if (result[0].exists) {
       db.unfavourite(userID, listingID);
       console.log('unfavorited');
