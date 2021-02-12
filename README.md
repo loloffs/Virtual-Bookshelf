@@ -8,16 +8,16 @@ Virtual Bookshelf is an app created as a midterm project during the Lighthouse L
 ## Screenshots
  
  ### Main Screen
-!["Screenshot of tweeter main"](https://github.com/loloffs/tweeter/blob/master/public/images/TweeterMain.png?raw=true)
+!["Screenshot of tweeter main"](https://github.com/loloffs/Virtual-Bookshelf/blob/master/public/images/Main%20page.png?raw=true)
 
 ### Compose Tweet
-!["Screenshot of tweeter main"](https://github.com/loloffs/tweeter/blob/master/public/images/TweeterCompose.png?raw=true)
+!["Screenshot of tweeter main"](https://github.com/loloffs/Virtual-Bookshelf/blob/master/public/images/Listings.png?raw=true)
 
 ### Hover over Tweet
-!["Screenshot of tweeter main"](https://github.com/loloffs/tweeter/blob/master/public/images/TweeterHover.png?raw=true)
+!["Screenshot of tweeter main"](https://github.com/loloffs/Virtual-Bookshelf/blob/master/public/images/create%20listing.png?raw=true)
 
 ### Display Error Message
-!["Screenshot of tweeter main"](https://github.com/loloffs/tweeter/blob/master/public/images/TweeterError.png?raw=true)
+!["Screenshot of tweeter main"](https://github.com/loloffs/Virtual-Bookshelf/blob/master/public/images/sold.png?raw=true)
 
 
 ## Features
