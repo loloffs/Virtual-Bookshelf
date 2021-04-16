@@ -68,7 +68,6 @@ module.exports = (pool) => {
     }));
   };
 
-
   const deleteListing = function(userID, listingID) {
     return pool.query(`
     DELETE FROM listings WHERE seller_id = $1 AND id = $2;
@@ -84,7 +83,6 @@ module.exports = (pool) => {
     `, [listingID])
   };
 
-
   const favouriteAListing = function(userID, listingID) {
     return pool.query(`
     INSERT INTO favourites (user_id, listing_id)
@@ -92,7 +90,6 @@ module.exports = (pool) => {
     RETURNING *;
     `, [userID, listingID])
   };
-
 
   const isListingFavourited = function(userID, listingID) {
     return pool.query(`
@@ -181,6 +178,5 @@ module.exports = (pool) => {
     getAllListings,
     unfavourite
   };
-
 }
 
