@@ -1,10 +1,3 @@
-// Do we need document.ready?
-
-// $(document).ready(function () {
-
-// });
-
-
 
 $(() => {
 console.log("TEST");
@@ -36,8 +29,6 @@ console.log("TEST");
   // });;
   // });
 
-
-
   $("#favourite-button").click(() => {
     console.log("favourite click");
      $.ajax({
@@ -47,13 +38,9 @@ console.log("TEST");
     console.log("listing favourited!");
   });;
   });
-
   // $(".button-sold").click(() => {
   //   $().toggle();
   // });
-
-
-
 });
 
 

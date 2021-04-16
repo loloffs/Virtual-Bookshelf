@@ -65,9 +65,7 @@ module.exports = (pool) => {
   return app;
 };
 
-//Ideas:
-    //Integrate the front end to take mutliple search params
-    //Have w drop down menu's, one for search type and one for order by
+
 
 
 

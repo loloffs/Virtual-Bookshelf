@@ -16,11 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 module.exports = (pool) => {
   const db = DBHELPER(pool);
 
-
-
-
-
-
 // GET favourites for logged in user: done
 
 app.get("/favourites", (req, res) => {
@@ -35,7 +30,6 @@ const userID = req.session.user_id;
     });
 });
 
-
 // POST create new listing: done
 
 app.post("/login", (req, res) => {
@@ -43,7 +37,6 @@ app.post("/login", (req, res) => {
   req.session.user_id = userID;
   res.send("Success",);
 });
-
 
 app.post("/create_listing", (req, res) => {
   const userID = req.session.user_id
@@ -67,7 +60,6 @@ app.post("/create_listing", (req, res) => {
     });
 });
 
-
 // GET my_listings for logged in user: done
 
 app.get("/myListings", (req, res) => {
@@ -83,7 +75,6 @@ app.get("/myListings", (req, res) => {
 
     });
 });
-
 
 // POST 'favourite' a listing as a logged in user: Not sure how to do this
 
@@ -115,12 +106,6 @@ app.post("/:listing_id/favourite", (req, res) => {
   });
 });
 
-
-
-
-// Handle case for unfavourite
-
-
 // DELETE delete your listing(s): Done
 
 app.post("/my_listings/:listing_id/delete", (req, res) => {
@@ -142,8 +127,6 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
   const userID = req.session.user_id
   const listingID = req.params.listing_id;
 
-  // console.log("HEY!");
-  // console.log("listingID", listingID);
 
   if(!userID) {
    return res.redirect("/");
@@ -156,34 +139,12 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 
 });
 
-
-
-// GET/POST for login? figure out how to do this for "fake" login:
-
-
-// First attempt...
-
-// app.post("/login", (req, res) => {
-//   const loginText = req.body.userID;
-
-//   if (!loginText) {
-//     return res.status(403).send("Please input a valid user ID");
-//   }
-
-//   req.session.user_id = loginText;
-//   res.redirect("/main",);
-// });
-
-
 // Second attempt where clicking "Login" button logs in as a random user
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
   req.session.user_id = userID;
   res.send("Success",);
 });
-
-
-
 
 // POST logout: which of these two is closest?: Done
 
@@ -196,10 +157,6 @@ app.post("/logout", (req, res) => {
 //   req.session.userId = null;
 //   res.send({});
 // });
-
-
-
- // GET/POST for search feature?
 
   return app;
 

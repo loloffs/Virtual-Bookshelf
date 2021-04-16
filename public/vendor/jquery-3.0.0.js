@@ -9537,9 +9537,6 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 	}
 } );
 
-
-
-
 // Support: Safari 8 only
 // In Safari 8 documents created via document.implementation.createHTMLDocument
 // collapse sibling forms: the second one becomes a child of the first one.
@@ -9666,9 +9663,6 @@ jQuery.fn.load = function( url, params, callback ) {
 	return this;
 };
 
-
-
-
 // Attach a bunch of functions for handling common AJAX events
 jQuery.each( [
 	"ajaxStart",
@@ -9683,17 +9677,11 @@ jQuery.each( [
 	};
 } );
 
-
-
-
 jQuery.expr.pseudos.animated = function( elem ) {
 	return jQuery.grep( jQuery.timers, function( fn ) {
 		return elem === fn.elem;
 	} ).length;
 };
-
-
-
 
 /**
  * Gets a window from an element
@@ -10001,10 +9989,6 @@ if ( typeof define === "function" && define.amd ) {
 	} );
 }
 
-
-
-
-
 var
 
 	// Map over jQuery in case of overwrite
@@ -10031,7 +10015,6 @@ jQuery.noConflict = function( deep ) {
 if ( !noGlobal ) {
 	window.jQuery = window.$ = jQuery;
 }
-
 
 return jQuery;
 } ) );
