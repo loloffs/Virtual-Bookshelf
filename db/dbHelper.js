@@ -104,8 +104,6 @@ module.exports = (pool) => {
 }
 
   const unfavourite = function(userID, listingID) {
-    console.log(userID);
-    console.log(listingID);
     return pool.query(`
     DELETE FROM favourites WHERE user_id = $1 AND listing_id = $2;
     `, [userID, listingID])

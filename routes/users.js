@@ -38,6 +38,13 @@ const userID = req.session.user_id;
 
 // POST create new listing: done
 
+app.post("/login", (req, res) => {
+  const userID = db.randomUserID();
+  req.session.user_id = userID;
+  res.send("Success",);
+});
+
+
 app.post("/create_listing", (req, res) => {
   const userID = req.session.user_id
 
@@ -172,7 +179,7 @@ app.post("/my_listings/:listing_id/sold", (req, res) => {
 app.post("/login", (req, res) => {
   const userID = db.randomUserID();
   req.session.user_id = userID;
-  res.send("Sucess",);
+  res.send("Success",);
 });
 
 
